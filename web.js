@@ -1,23 +1,22 @@
+/* WEB OBJECT DEFINITION */
+
 //Handles all of the nodes
 function Web(rootArtistName) {
 	this.root = new Node(rootArtistName, true);
 
 }
 
-Web.prototype.displayWeb = new function() {
-
-}
-
-//Code that I wrote at the same time:
-
 //Renders the web
-function render(){
+Web.prototype.render = function(){
   //To be determined... 
 }
 //Updates the state of the web
-function update(){
+Web.prototype.update = function(){
   //To be determined
 }
+
+/* MAIN BODY */
+
 //Artist name provided by the user
 var rootName = ""; 
 //Creates a Node object to represent the Web
