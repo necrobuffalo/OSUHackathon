@@ -17,7 +17,7 @@ function Node(name){
 
     //Properties
     this.name = name;
-    this.similarArtists = new Array();
+    this.similarArtists = [];
     this.isVisible = false;
 
     //Methods
