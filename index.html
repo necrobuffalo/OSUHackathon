@@ -10,9 +10,12 @@
     <body>
         <!--Places a bar at the top of the screen for navigation-->
         <div id = "navbar">
-            <div class = "button" id = "NewButton">
-                <p>New Web</p>
-            </div>
+			<form>
+			Enter the name of an artist: <input type="text" name="artistName">
+            <button class = "submit" id = "NewButton">
+                <p>Submit</p>
+            </button>
+			</form>
         </div>
         <!--node.js isn't referenced directly in this page. web.js handles everything.-->
         <script src="web.js"></script>
