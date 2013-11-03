@@ -8,16 +8,22 @@ $(document).ready(function() {
 })
 
 function init() {
+	
 	//Initialize stuff
 	web = new Web(rootName);
 	web.root.expand();
-
+	
 	//Bind event handler for change in base artist
 	$("#navbar input[name=artistName]").change(function() {
 		//Update root name
 		rootName = $("#navbar input[name=artistName]").val();
-
-		//TODO update everything else accordingly
+		
+		//Update the web
+		web = new Web(rootName);
+		web.root.expand();
+		
+		//Render the web
+		web.render();
 	})
 
 
