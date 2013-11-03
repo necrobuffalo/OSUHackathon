@@ -51,6 +51,15 @@ button {
 	margin:0px;
 }
 
+#audioPlayer{
+	display:inline;
+	margin-left:8px;
+	padding:none;
+	border:none;
+	position:absolute;
+	top:8px;
+}
+
 
 #search{
 	display:inline;
@@ -58,17 +67,23 @@ button {
 #logo {
 	float:left;
 	font-family: "Verdana";
-	vertical-align:center;
 	font-size:24px;
-	color:yellow;
-	height:50px;
-	margin:0px;
-	border:none;
+	color:white;
+	height:42px;
 	display:inline;
-	padding-right:20px;
-	padding-left:20px;
-	padding-top:10px;
-	margin:0px;
+	background-color: #333333;
+	margin-left:0px;
+	margin-right:0px;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+}
+
+p{
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+	margin-left:8px;
 }
 
 canvas{
@@ -86,3 +101,6 @@ button:hover{
 	background-color: #1C1C1C;
 }
 
+#logo:hover{
+	background-color: #1C1C1C;
+}
