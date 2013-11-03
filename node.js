@@ -19,36 +19,18 @@ function Node(name){
 Node.prototype.expand = function(){
 
     //If similarArtists is not empty, no reason to populate it.
-    if (this.similarArtists.length > 0) {
-
-    }
-    else {
+    if (this.similarArtists.length == 0) {
      
-         echonest.artist(this.name).similar(
-                function(similarCollection){
-                    var names = {name};
-                }
-         );
+        var names = [];
+        //Populates names with the names of similar artists
+        echonest.artist("Muse").similar( function(similarCollection) {
+            names = ${name};
+        });
          
-         for(i = 0; i <= 5; i++){
+         var i = 0;
+         while(i <= 5 && i < names.length ){
             this.similarArtists[i] = new Node(names[i]);
          }
-
-        // //If similarArtists is empty, populate it.
-        // for(i = 0; i < 5; i++){
-        //     //Add similar artists
-        //     //Not sure if this actually works
-        //     this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
-        //         function(similarCollection){
-        //             this.similarArtists[i] = {name};
-        //         }
-        //      ););
-
-        //     //this.similarArtists[i].node = new Node(iName); //I'm not sure if this is how it works in js //Doesn't need to happen unless we want to expand something.
-
-        //     //Toggle visibility
-        //     this.similarArtists[i] = iNode;
-        // }
     }
 
     //Toggle visibility on, regardless of what happens.
@@ -62,12 +44,4 @@ Node.prototype.collapse = function() {
 
     //Toggle visibility off.
     this.childrenAreVisible = false;
-}
-
-/*
- * I think that we should write and interpreter that collectively renders the nodes 
- * by accessing their data parameters, rather than trying to render them recursively 
- * with this method.
- */
-Node.prototype.render = function(){
 }
