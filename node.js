@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ 
+ //Creates echonest object
+ var echonest = new EchoNest("9NQYW4WQCM3URUORT");
 
 //Constructor for Node
 function Node(name){
@@ -24,7 +27,8 @@ Node.prototype.expand = function(){
         //If similarArtists is empty, populate it.
         for(i = 0; i < 5; i++){
             //Add similar artists
-            this.similarArtists[i] = new Node(); //TODO populate with name from echonest
+            //Not sure if this actually works
+            this.similarArtists[i] = new Node(echonest.artist(this.name).similar(););
 
             //this.similarArtists[i].node = new Node(iName); //I'm not sure if this is how it works in js //Doesn't need to happen unless we want to expand something.
 
