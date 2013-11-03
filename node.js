@@ -28,7 +28,11 @@ Node.prototype.expand = function(){
         for(i = 0; i < 5; i++){
             //Add similar artists
             //Not sure if this actually works
-            this.similarArtists[i] = new Node(echonest.artist(this.name).similar(););
+            this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
+                function(similarCollection){
+                    this.similarArtists[i] = {name};
+                }
+             ););
 
             //this.similarArtists[i].node = new Node(iName); //I'm not sure if this is how it works in js //Doesn't need to happen unless we want to expand something.
 
