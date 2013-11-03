@@ -24,11 +24,11 @@ Node.prototype.expand = function(){
     }
     else {
      
-         this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
+         echonest.artist(this.name).similar(
                 function(similarCollection){
                     var names = {name};
                 }
-         ););
+         );
          
          for(i = 0; i <= 5; i++){
             this.similarArtists[i] = new Node(names[i]);
