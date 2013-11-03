@@ -1,27 +1,28 @@
-var canvas;
-var context;
+//Artist name provided by user
+var rootName;
+//Creates a new web
+var web;
 
 $(document).ready(function() {
 	init();
-
-	draw();
 })
 
-$(window).resize(resizeCanvas);
-
-function resizeCanvas() {
-	canvas.attr("width",$(window).get(0).innerWidth);
-	canvas.attr("height",$(window).get(0).innerHeight);
-
-	draw();
-}
-
-
 function init() {
-	canvas = document.getElementById("window");
-	context = canvas.getContext("2d");
+	//Initialize stuff
+	web = new Web(rootName);
+	web.root.expand();
+
+	//Bind event handler for change in base artist
+	$("#navbar input[name=artistName]").change(function() {
+		//Update root name
+		rootName = $("#navbar input[name=artistName]").val();
+
+		//TODO update everything else accordingly
+	})
+
+
 }
 
 function draw() {
-
+	web.render();
 }
