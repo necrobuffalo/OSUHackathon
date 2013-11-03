@@ -147,9 +147,11 @@ function fetchDeezerTrack(song, div) {
                 tdiv.append( $("<div class='title'>").text(data.title));
                 tdiv.append( $("<div>").text(data.album.title));
                 tdiv.append( $("<div>").text(data.artist.name));
-                div.append(tdiv);
+                
                 div.append(createPlayer(data.preview));
-                div.append($('<br clear="left">'));
+				
+				//div.append(tdiv);
+                //div.append($('<br clear="left">'));
             }
         );
     }
