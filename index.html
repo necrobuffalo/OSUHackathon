@@ -15,14 +15,16 @@
     <body>
         <!--Places a bar at the top of the screen for navigation-->
         <div id = "navbar">
-            <form name="getArtist">
-                <input type="text" name="artistName" placeholder="Enter an artist's name">
-					<button class = "submit">
-						<p>Discover</p>
-					</button>
-				</input>
-            </form>
-        </div>
+			<div id = "logo">TuneSpider</div>
+			<div id = "search">
+				<form name="getArtist">
+					<input type="text" name="artistName" placeholder="Enter an artist's name">
+						<button class = "submit">
+							<p>Discover</p>
+						</button>
+					</input>
+				</form>
+			</div>
 
         <div id="canvas">
             <canvas id="viewport" width="800" height="600"></canvas> <!-- needs to be resizable with jquery later, but this'll do for now-->
@@ -40,4 +42,3 @@
 
     </body>
 </html>
-
