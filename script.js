@@ -3,6 +3,8 @@ var rootName;
 //Creates a new web/particle system
 var sys;
 
+var DEEZER_DEMO_API_KEY='9NQYW4WQCM3URUORT';
+
 //echonest object for api calls
 var echonest;
 
@@ -66,6 +68,8 @@ function populate() {
 			root:{c1:{},c2:{},c3:{},c4:{},c5:{}}
 		}
 	}
+	
+	playMusic(getParameterByName("artistName"));
 
 	//add children of root
 	echonest.artist(getParameterByName("artistName")).similar(function(similarCollection){
@@ -88,4 +92,80 @@ function getParameterByName(name) {
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function playMusic(rootArtist){
+	var audio
+	jQuery.ajaxSettings.traditional = true;
+	
+	var artist = getParameterByName("artistName");
+	
+	fetchMusic(artist);
+	
+	
+}
+
+function fetchMusic(artist) {
+    $("#song").empty();
+    var url = 'http://developer.echonest.com/api/v4/playlist/static?callback=?'
+    jQuery.getJSON(url, 
+        {   artist:artist, 
+            type:'artist-radio', 
+            format:'jsonp', 
+            bucket: ['id:deezer', 'tracks'],
+            limit: true,
+            'api_key' : DEEZER_DEMO_API_KEY
+        },
+        function(data) {
+            if (data.response.status.code == 0) {
+                var songs = data.response.songs;
+                addSong(songs);
+            } else {
+            }
+        }
+    );
+}
+
+function addSong(songs) {
+    var div = $("#playlist");
+    fetchDeezerTrack(songs[0], div);
+}
+
+function fetchDeezerTrack(song, div) {
+    if (song.tracks.length > 0) {
+        var tid = song.tracks[0].foreign_id.split(':')[2];
+        var url = 'http://api.deezer.com/2.0/track/' + tid + '?callback=?'
+
+        jQuery.getJSON(url, { output:'jsonp'},
+            function(data) {
+                var link = $("<a target='deezer'>").attr('href', data.link);
+                var cover = $("<img class='timg'>").attr('src', data.album.cover).attr("style", "float:left");
+                link.append(cover);
+                div.append(link);
+
+                var tdiv = $("<div class='tdiv'>");
+                tdiv.append( $("<div class='title'>").text(data.title));
+                tdiv.append( $("<div>").text(data.album.title));
+                tdiv.append( $("<div>").text(data.artist.name));
+                div.append(tdiv);
+                div.append(createPlayer(data.preview));
+                div.append($('<br clear="left">'));
+            }
+        );
+    }
+}
+
+function createPlayer(audio) {
+    var player = $("<audio class='player' preload='none' controls='controls'>").attr("src", audio);
+    return player;
+}
+
+function createPlayButton(audio) {
+    var button = $("<button>").text("preview");
+    button.click( 
+        function()  {
+            alert("Playing " + audio);
+        }
+    );
+    return button;
 }
