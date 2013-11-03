@@ -5,22 +5,26 @@
  */
 
 //Name of the artist
-var name;
+//var name;
 //Array of the nodes for similar artists
-var similarArtists;
+//var similarArtists;
 //Boolean which determines whether this will be rendered
-var isVisible;
+//var isVisible;
 
 //Constructor for Node
 function Node(name){
-    this = new Object();
+    //this = new Object();
+
+    //Properties
     this.name = name;
     this.similarArtists = new Array();
     this.isVisible = false;
+
+    //Methods
 }
 
 //Expands the node. Gives it 5 similar artists.
-function Expand(){
+Node.prototype.expand = function(){
     for(i = 0; i < 5; i++){
         iName = ""; //Insert echonest code here
         iNode = new Node(iName); //I'm not sure if this is how it works in js
@@ -34,5 +38,5 @@ function Expand(){
  * by accessing their data parameters, rather than trying to render them recursively 
  * with this method.
  */
-function Render(){
+Node.prototype.render = function(){
 }
