@@ -48,10 +48,13 @@ $("#navbar input[name=artistName]").change(function() {
 	sys.addNode(rootName, {'color':'red','shape':'dot','label':rootName});
 	//add children of root
 	echonest.artist(rootName).similar(function(similarCollection){
-		$.each(similarCollection.getData(), function(count,item) {
+		
+		jQuery.each(similarCollection.getData(), function(count,item) {
+			//alert(item.name);
 			sys.addNode(item.name, {'color':'blue','shape':'dot','label':item.name});
-			sys.addEdge(rootName, item.name, {});
+			sys.addEdge(rootName, item.name);
 		})
+		
 	}, {results: 5});
 
 })
