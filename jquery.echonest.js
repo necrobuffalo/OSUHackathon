@@ -1,3 +1,5 @@
+
+//Provided by https://github.com/Rodeoclash/Echonest-jQuery-Plugin
 (function(window, $) {
         
         /**
