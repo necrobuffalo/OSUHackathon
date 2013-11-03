@@ -14,6 +14,7 @@ body {
 	margin-left:0px;
     margin-top:0px;
 	vertical-align:middle;
+	z-index:-1;
 } 
 
 input {
@@ -70,6 +71,18 @@ button {
 	margin:0px;
 }
 
+canvas{
+	overflow: visible;
+	z-index:1;
+}
+
+#resource{
+	position:fixed;
+	right:0px;
+	bottom:0px;
+	
+}
 button:hover{
 	background-color: #1C1C1C;
 }
+
