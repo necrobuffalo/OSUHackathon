@@ -23,22 +23,32 @@ Node.prototype.expand = function(){
 
     }
     else {
-
-        //If similarArtists is empty, populate it.
-        for(i = 0; i < 5; i++){
-            //Add similar artists
-            //Not sure if this actually works
-            this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
+     
+         this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
                 function(similarCollection){
-                    this.similarArtists[i] = {name};
+                    var names = {name};
                 }
-             ););
+         ););
+         
+         for(i = 0; i <= 5; i++){
+            this.similarArtists[i] = new Node(names[i]);
+         }
 
-            //this.similarArtists[i].node = new Node(iName); //I'm not sure if this is how it works in js //Doesn't need to happen unless we want to expand something.
+        // //If similarArtists is empty, populate it.
+        // for(i = 0; i < 5; i++){
+        //     //Add similar artists
+        //     //Not sure if this actually works
+        //     this.similarArtists[i] = new Node(echonest.artist(this.name).similar(
+        //         function(similarCollection){
+        //             this.similarArtists[i] = {name};
+        //         }
+        //      ););
 
-            //Toggle visibility
-            this.similarArtists[i] = iNode;
-        }
+        //     //this.similarArtists[i].node = new Node(iName); //I'm not sure if this is how it works in js //Doesn't need to happen unless we want to expand something.
+
+        //     //Toggle visibility
+        //     this.similarArtists[i] = iNode;
+        // }
     }
 
     //Toggle visibility on, regardless of what happens.
