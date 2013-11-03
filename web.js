@@ -30,7 +30,7 @@ web.Expand();
 render();
 
 //Loops the application. Underdefined right now.
-while(true){
-  update();
-  render();
-}
+// while(true){
+//   update();
+//   render();
+// }
